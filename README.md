@@ -1,24 +1,65 @@
-# README
+## groups テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column | Type   | Options                   |
+| ------ | ------ | ------------------------- |
+| name   | string | null: false               |
 
-Things you may want to cover:
+### Association
+- has_many :users
+- has_many :cards
+- has_many :shops
+- has_many :prices
 
-* Ruby version
+## users テーブル
 
-* System dependencies
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| nickname           | string     | null: false, unique: true      |
+| email              | string     | null: false, unique: true      |
+| encrypted_password | string     | null: false                    |
+| group              | references | null: false, foreign_key: true |
 
-* Configuration
+### Association
+- belongs_to :group
 
-* Database creation
+## cards テーブル
 
-* Database initialization
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| expansion_id | integer    | null: false                    |
+| rarity_id    | integer    |                                |
+| card_type_id | integer    | null: false                    |
+| attribute_id | integer    |                                |
+| group        | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+- belongs_to :group
 
-* Services (job queues, cache servers, search engines, etc.)
+- has_many :prices
 
-* Deployment instructions
+## shops テーブル
 
-* ...
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| name   | string     | null: false                    |
+| group  | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :group
+
+- has_many :prices
+
+## prices テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| price  | integer    | null: false                    |
+| group  | references | null: false, foreign_key: true |
+| card   | references | null: false, foreign_key: true |
+| shop   | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :group
+- belongs_to :card
+- belongs_to :shop
