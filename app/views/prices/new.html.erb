@@ -1,0 +1,7 @@
+<div class="container">
+  <h3>価格を登録する</h3>
+  <%= form_with(model: @price, local: true) do |f| %>
+    <%= f.text_field :price, placeholder: "(例)300" %>
+    <%= f.submit "SEND" %>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<div class="container">
+  <h3>最新の情報に更新する</h3>
+  <%= form_with(model: @price, local: true) do |form| %>
+    <%= form.text_field :price, placeholder: @price.price %>
+    <%= form.submit "SEND" %>
+  <% end %>
+</div>

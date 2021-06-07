@@ -59,3 +59,12 @@
     </div>
   </table>
 </div>
+<%= link_to "価格を登録する",new_price_path %>
+
+<% @prices.each do |price| %>
+  <p><%= price.price %></p>
+  <ul class="more_list">
+    <li><%= link_to '編集', edit_price_path(price.id), method: :get %></li>
+    <li><%= link_to '削除', price_path(price.id), method: :delete %></li>
+  </ul>
+<% end %>
