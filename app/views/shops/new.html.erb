@@ -1,0 +1,16 @@
+<div class="container">
+  <h3>新しい店舗を登録する</h3>
+  <%= form_with(model: @shop, local: true) do |form| %>
+    <div class="weight-bold-text question-text">
+      <span>登録する店舗情報について</span>
+    </div>
+
+    <div class="weight-bold-text">
+      店舗名（仲間内で分かる名前を入力してください）
+      <span class="indispensable">必須</span>
+    </div>
+    <%= form.text_field :name, placeholder: "店舗名" %>
+    
+    <%= form.submit "店舗を登録する" %>
+  <% end %>
+</div>
