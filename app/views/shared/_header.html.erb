@@ -6,13 +6,12 @@
   </div>
   <div class='nav'>
       <%# <% if user_signed_in? %>
-        <li><%= link_to 'ユーザー名', "#", class: "user-nickname" %></li>
+        <li><%= link_to @groups.name, "#", class: "user-groupname" %></li>/
+        <li><%= link_to 'ユーザー名', "#", class: "user-nickname" %></li>/
         <li><%= link_to 'ログアウト', "#", method: :delete, class: "logout" %></li>
       <%# <% else %>
-        <li><%= link_to 'ログイン', "#", class: "login" %></li>
-        <li><%= link_to '新規登録', "#", class: "sign-up" %></li>
-        <li><%= link_to 'カード新規登録', "#", class: "card-build" %></li>
-        <li><%= link_to '店舗新規登録', "#", class: "shop-build" %></li>
+        <li><%= link_to 'ログイン', "#", class: "login" %></li>/
+        <li><%= link_to 'ユーザー新規登録', "#", class: "sign-up" %></li>
       <%# <% end %>
   </div>
 </header>

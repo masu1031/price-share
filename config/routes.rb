@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :prices, only: [:index, :new, :create, :destroy, :edit, :update]
   resources :cards, only: [:new, :create]
   resources :shops, only: [:new, :create]
+  resources :groups, only: [:new, :create]
 end

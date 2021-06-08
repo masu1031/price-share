@@ -1,0 +1,11 @@
+<div class="container">
+  <h3>新しいグループを登録する</h3>
+  <%= form_with(model: @group, local: true) do |form| %>
+    <div class="weight-bold-text">
+      グループ名（仲間内で共有する名前を入力してください）
+      <span class="indispensable">必須</span>
+    </div>
+    <%= form.text_field :name, placeholder: "グループ名" %>
+    <%= form.submit "グループを登録する" %>
+  <% end %>
+</div>

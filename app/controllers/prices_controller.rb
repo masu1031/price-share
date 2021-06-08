@@ -4,6 +4,7 @@ class PricesController < ApplicationController
     @prices = Price.all
     @cards = Card.all
     @shops = Shop.all
+    @groups = Group.all
   end
 
   def new
