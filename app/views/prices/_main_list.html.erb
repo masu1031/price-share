@@ -1,5 +1,8 @@
+<%= link_to "カードを登録する",new_card_path %>
+
 <div class="table">
- <table border="2" cellpadding="20">
+<% @cards.each do |card| %>
+ <table cellpadding="20">
     <div class="table-header">
       <div class="table-header-1">
         <tr>
@@ -24,11 +27,11 @@
 
     <div class="table-data">
       <tr>
-        <th>ピカチュウVMAX</th>
-        <th>仰天のボルテッカー</th>
-        <th>HR</th>
-        <th>ポケモン</th>
-        <th></th>
+        <th><%= card.name %></th>
+        <th><%= card.expansion[:name] %></th>
+        <th><%= card.rarity[:name] %></th>
+        <th><%= card.card_type[:name] %></th>
+        <th><%= card.attribute[:name] %></th>
         <th><%= link_to "2000" %></th>
         <th><%= link_to "2500" %></th>
         <th><%= link_to "2300" %></th>
@@ -58,7 +61,9 @@
       </tr>
     </div>
   </table>
+<% end %>
 </div>
+
 <%= link_to "価格を登録する",new_price_path %>
 
 <% @prices.each do |price| %>
@@ -68,3 +73,4 @@
     <li><%= link_to '削除', price_path(price.id), method: :delete %></li>
   </ul>
 <% end %>
+
