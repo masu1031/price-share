@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'prices/index'
   root to: "prices#index"
 
