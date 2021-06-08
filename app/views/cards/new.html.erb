@@ -1,16 +1,11 @@
 <div class="container">
   <h3>新しいカードを登録する</h3>
   <%= form_with(model: @card, local: true) do |form| %>
-    <div class="weight-bold-text question-text">
-      <span>登録するカード情報について</span>
-    </div>
-
     <div class="weight-bold-text">
       カード名（正式名称を入力してください）
       <span class="indispensable">必須</span>
     </div>
     <%= form.text_field :name, placeholder: "カード名" %>
-    
     <div class="weight-bold-text">
       商品名（下記から選択してください）
       <span class="indispensable">必須</span>
