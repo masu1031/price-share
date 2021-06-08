@@ -3,6 +3,7 @@ class PricesController < ApplicationController
   def index
     @prices = Price.all
     @cards = Card.all
+    @shops = Shop.all
   end
 
   def new
