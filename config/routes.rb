@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: "prices#index"
 
   resources :prices, only: [:index, :new, :create, :destroy, :edit, :update]
+  resources :cards, only: [:new, :create]
 end

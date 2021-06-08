@@ -1,0 +1,35 @@
+<div class="container">
+  <h3>新しいカードを登録する</h3>
+  <%= form_with(model: @card, local: true) do |form| %>
+    <div class="weight-bold-text question-text">
+      <span>登録するカード情報について</span>
+    </div>
+
+    <div class="weight-bold-text">
+      カード名（正式名称を入力してください）
+      <span class="indispensable">必須</span>
+    </div>
+    <%= form.text_field :name, placeholder: "カード名" %>
+    
+    <div class="weight-bold-text">
+      商品名（下記から選択してください）
+      <span class="indispensable">必須</span>
+    </div>
+    <%= form.collection_select(:expansion_id, Expansion.all, :id, :name, {}, {class:"select-box", id:""}) %>
+    <div class="weight-bold-text">
+      レアリティ（下記から選択してください）
+    </div>
+    <%= form.collection_select(:rarity_id, Rarity.all, :id, :name, {}, {class:"select-box", id:""}) %>
+    <div class="weight-bold-text">
+      カードタイプ（下記から選択してください）
+      <span class="indispensable">必須</span>
+    </div>
+    <%= form.collection_select(:card_type_id, CardType.all, :id, :name, {}, {class:"select-box", id:""}) %>
+    <div class="weight-bold-text">
+      特別なカード（下記から選択してください）
+    </div>
+    <%= form.collection_select(:attribute_id, Attribute.all, :id, :name, {}, {class:"select-box", id:""}) %>
+
+    <%= form.submit "カードを登録する" %>
+  <% end %>
+</div>
