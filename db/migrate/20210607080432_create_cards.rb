@@ -6,7 +6,7 @@ class CreateCards < ActiveRecord::Migration[6.0]
       t.integer    :rarity_id,    null: false
       t.integer    :card_type_id, null: false
       t.integer    :attribute_id, null: false
-      # t.references :group,        foreign_key: true
+      t.references :group,        null: false, foreign_key: true
 
       t.timestamps
     end

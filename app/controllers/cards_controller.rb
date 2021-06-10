@@ -16,7 +16,6 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:name, :expansion_id, :rarity_id, :card_type_id, :attribute_id)
-    # .merge(group_id: current.group_id)
+    params.require(:card).permit(:name, :expansion_id, :rarity_id, :card_type_id, :attribute_id).merge(group_id: current_user.group_id)
   end
 end

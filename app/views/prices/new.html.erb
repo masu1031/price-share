@@ -1,7 +1,32 @@
 <div class="container">
   <h3>価格を登録する</h3>
-  <%= form_with(model: @price, local: true) do |f| %>
-    <%= f.text_field :price, placeholder: "(例)300" %>
-    <%= f.submit "SEND" %>
+
+  <%=form_with model: @price, local: true do |f|%>
+    <div>
+      <select name="price[card_id]">
+        <option>価格を登録するカードを選択してください</option>
+          <% Card.all.each do |card| %>
+            <option value=<%= card.id %>><%= card.name %></option>
+          <% end %>
+      </select>
+    </div>
+
+    <div>
+      <select name="price[shop_id]">
+        <option>価格を登録する店舗を選択してください</option>
+          <% Shop.all.each do |shop| %>
+            <option value=<%= shop.id %>><%= shop.name %></option>
+          <% end %>
+      </select>
+    </div>
+
+    <input name="price[group_id]" type="hidden" value=<%= current_user.group_id %>>
+
+    <div>
+      <%= form_with(model: @price, local: true) do |f| %>
+        <%= f.text_field :price, placeholder: "(例)300" %>
+        <%= f.submit "SEND" %>
+      <% end %>
+    </div>
   <% end %>
 </div>

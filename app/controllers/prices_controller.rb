@@ -27,7 +27,7 @@ class PricesController < ApplicationController
   end
 
   def edit
-    @price = Price.find(params[:id])    
+    @price = Price.find(params[:id])
   end
 
   def update
@@ -42,6 +42,6 @@ class PricesController < ApplicationController
   private
 
   def price_params
-    params.require(:price).permit(:price)
+    params.require(:price).permit(:price, :card_id, :shop_id, :group_id).merge(group_id: current_user.group_id)
   end
 end
