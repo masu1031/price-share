@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: price_share_production
-  username: price_share
-  password: <%= ENV['PRICE_SHARE_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
