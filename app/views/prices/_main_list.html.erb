@@ -1,20 +1,21 @@
+<div calss="registration-2">
+  <a calss="registration-btn">
+    <%= link_to "グループを登録する",new_group_path, class:'btn btn--orange' %>
+  </a>
+</div>
+
 <% if user_signed_in? %>
 
   <div calss="registration">
   <div calss="registration-1">
     <a calss="registration-btn">
-      <%= link_to "価格を登録する",new_price_path, class:'btn btn--orange' %>
+      <%= link_to "店舗を登録する",new_shop_path, class:'btn btn--orange' %>
     </a>
     <a calss="registration-btn">
       <%= link_to "カードを登録する",new_card_path, class:'btn btn--orange' %>
     </a>
-  </div>
-  <div calss="registration-2">
     <a calss="registration-btn">
-      <%= link_to "店舗を登録する",new_shop_path, class:'btn btn--orange' %>
-    </a>
-    <a calss="registration-btn">
-      <%= link_to "グループを登録する",new_group_path, class:'btn btn--orange' %>
+      <%= link_to "価格を登録する",new_price_path, class:'btn btn--orange' %>
     </a>
   </div>
   </a>
