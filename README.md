@@ -1,5 +1,5 @@
 # アプリケーション名	
-	card_price_app
+	price-share
 
 # アプリケーション概要
 	商品（中古トレカ）の価格を「メモ・共有」できるアプリケーションを作成しました。
@@ -12,10 +12,11 @@
 		「ユーザー」は自分以外が作成した「価格」も編集が可能です。
 
 # URL
-https://git.heroku.com/price-share.git
+	http://3.128.144.209/
 
 # テスト用アカウント
-	ログイン機能等を実装した場合は、ログインに必要な情報を記述。またBasic認証等を設けている場合は、そのID/Passも記述すること。
+	Email: masumoto1234@com
+	Password: masumoto1234
 
 # 利用方法
 	実店舗を訪れ、自身の購入したい商品の価格を確認します。
@@ -25,10 +26,10 @@ https://git.heroku.com/price-share.git
 
 # 目指した課題解決
 
-## ・ペルソナ
+## ペルソナ
 	20~40代のトレーディングカードゲームを趣味とする会社員です。
 
-## ・前提
+## 前提
 	対戦型のトレーディングカードゲームでは、自分の好きなカードを組み合わせたデッキを作成します。
 	デッキに入れたいカードがある場合、入手方法は主に２通りあります。
 		１．パックをメーカー小売希望価格の定価で自分の欲しいカードが出るまで購入する。
@@ -37,23 +38,19 @@ https://git.heroku.com/price-share.git
 			※カード専門店では、パックから開封されたカードなどがバラ売りされており、カードの強さや需要に応じて、お店側が価格が付けている。
 	目的に応じて、入手方法の選択は異なりますが、多くのユーザーが２の方法を活用しています。
 
-## ・課題
+## 課題
 	中古品の販売事情から、実店舗での販売価格はインターネットなどで公式には公開されていません。
 		※特に価格が１日単位で変動することが大きい
 	また、店舗により商品の価格が異なます。
 	商品を安く購入したいユーザーは、店舗ごとの商品の価格を比較するために、複数店舗を訪れる手間が生じます。
 	この課題を解決しようと考えたのが今回のcard_price_appです。
 
-## ・アプリを作成するにあたって配慮した点
+## アプリを作成するにあたって配慮した点
 	想定した解決したい課題から考えると、誰もが「価格」を作成・編集し、その「価格」を共有できる機能は必須です。
 	その為、不特定多数のユーザーで情報を共有することが課題になります。
-		具体的な懸念事項としては、悪意のあるユーザーが虚偽の価格を更新することを考えました。
-	懸念事項を払拭するため、考えた改善機能は以下の２点です。
-	その内、「１」を採用しました。
-		・改善の為に必要な追加実装機能（案）
-		１．グループ機能を作成し、特定のユーザー同士でのみ価格を共有できるようにします。
-				信頼・信用のおける人物同士でのみ、価格を共有することが出来るようなる。
-		２．ユーザー評価機能を導入し、編集したユーザーの評価を見ることが出来るようにして、虚偽の更新を抑制する仕組みをつくる。
+	具体的な懸念事項としては、悪意のあるユーザーが虚偽の価格を更新することを考えました。
+	これに対して、グループ機能を作成し、特定のユーザー同士でのみ価格を共有できるようにします。
+	さらに承認機能を実装できれば、実用的になるかと考えています。
 
 # 洗い出した要件
 	価格登録機能
@@ -61,21 +58,25 @@ https://git.heroku.com/price-share.git
 	店舗登録機能
 	ユーザー登録機能
 	グループ登録機能
-	ソート機能
-	スクロール枠の固定機能
+	グループ承認機能
 
 # 実装した機能についての画像やGIFおよびその説明
-	実装した機能について、それぞれどのような特徴があるのかを列挙する形で記述。画像はGyazoで、GIFはGyazoGIFで撮影すること。
+  トップページ
+	https://i.gyazo.com/9a5763d71c2e2940a8295705c0ee16bb.png
+	価格登録機能
+	https://gyazo.com/645c2be654545c3526b30b2abcfbcd86
+	価格編集機能
+	https://gyazo.com/331e89bc8eb47278aa534a422a2f966a
 
 # 実装予定の機能
-	洗い出した要件の中から、今後実装予定の機能がある場合は、その機能を記述。
+	グループ承認機能
 
 # データベース設計
 ・前提
 	言語：Ruby
 	フレームワーク：ruby on rails
 	バージョン管理：gitHub
-	デプロイするサーバー：heroku
+	デプロイするサーバー：AWS
 
 ・効率的な開発
 	Gem：devise, ActiveHash
@@ -92,18 +93,6 @@ https://git.heroku.com/price-share.git
 - has_many :shops
 - has_many :prices
 
-## users テーブル
-
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| nickname           | string     | null: false, unique: true      |
-| email              | string     | null: false, unique: true      |
-| encrypted_password | string     | null: false                    |
-| group              | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :group
-
 ## cards テーブル
 
 | Column       | Type       | Options                        |
@@ -117,7 +106,6 @@ https://git.heroku.com/price-share.git
 
 ### Association
 - belongs_to :group
-
 - has_many :prices
 
 ## shops テーブル
@@ -129,7 +117,6 @@ https://git.heroku.com/price-share.git
 
 ### Association
 - belongs_to :group
-
 - has_many :prices
 
 ## prices テーブル
@@ -145,3 +132,15 @@ https://git.heroku.com/price-share.git
 - belongs_to :group
 - belongs_to :card
 - belongs_to :shop
+
+## users テーブル
+
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| nickname           | string     | null: false, unique: true      |
+| email              | string     | null: false, unique: true      |
+| encrypted_password | string     | null: false                    |
+| group              | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :group
