@@ -29,6 +29,9 @@
     text-align: center;
   }
   
+  .header-nav{
+  }
+  
   .nav{
     margin: 5px 0 0 15px;
   }
@@ -36,26 +39,58 @@
   /* body */
   .wrapper{
     /* background-color: #80b7ff; */
+
+  }
+  .registration{
+    overflow: hidden;
   }
   
+  .registration-btn{
+    width: 100px;
+    float:left;
+  }
+
   html {
-    font-size: 75%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+    
+  .btn,
+  a.btn,
+  button.btn {
+  font-size: 0.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  /* position: relative; */
+  /* display: inline-block; */
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+  margin: 5px;
   }
 
-  a.btn {
-    padding: 5px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    margin: 5px;
-    color: #fff;
-    background-color: green;
-  }
-
-  a.btn:hover {
-    color: #fff;
-    background: green;
-  }
+  .btn--orange,
+a.btn--orange {
+  color: #fff;
+  background-color: green;
+}
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: #fff;
+  background: green;
+}
 
   table {
     border-collapse: collapse;
@@ -69,10 +104,17 @@
     border-width: 2px;
     border-color: green;
   }
+  /* .table {
+   border-collapse: collapse;
+   border:1px solid #333;
+  }
 
+  .table th, table td{
+    border-style: dotted;    
+  } */
+  
   /* footer */
   .footer{
     text-align: center;
-    border: solid 1px;
     background-color: #fffb0a;
   }
