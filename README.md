@@ -42,7 +42,7 @@ https://git.heroku.com/price-share.git
 		※特に価格が１日単位で変動することが大きい
 	また、店舗により商品の価格が異なます。
 	商品を安く購入したいユーザーは、店舗ごとの商品の価格を比較するために、複数店舗を訪れる手間が生じます。
-	この課題を解決しようと考えたのが今回のcard_price_appです。
+	この課題を解決しようと考えたのが今回のprice_share_appです。
 
 ## ・アプリを作成するにあたって配慮した点
 	想定した解決したい課題から考えると、誰もが「価格」を作成・編集し、その「価格」を共有できる機能は必須です。
@@ -61,14 +61,9 @@ https://git.heroku.com/price-share.git
 	店舗登録機能
 	ユーザー登録機能
 	グループ登録機能
+
 	ソート機能
 	スクロール枠の固定機能
-
-# 実装した機能についての画像やGIFおよびその説明
-	実装した機能について、それぞれどのような特徴があるのかを列挙する形で記述。画像はGyazoで、GIFはGyazoGIFで撮影すること。
-
-# 実装予定の機能
-	洗い出した要件の中から、今後実装予定の機能がある場合は、その機能を記述。
 
 # データベース設計
 ・前提
@@ -77,11 +72,10 @@ https://git.heroku.com/price-share.git
 	バージョン管理：gitHub
 	デプロイするサーバー：heroku
 
-・効率的な開発
+# 効率的な開発
 	Gem：devise, ActiveHash
 
 ## groups テーブル
-
 | Column | Type   | Options                   |
 | ------ | ------ | ------------------------- |
 | name   | string | null: false               |
@@ -93,7 +87,6 @@ https://git.heroku.com/price-share.git
 - has_many :prices
 
 ## users テーブル
-
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | nickname           | string     | null: false, unique: true      |
@@ -105,7 +98,6 @@ https://git.heroku.com/price-share.git
 - belongs_to :group
 
 ## cards テーブル
-
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | name         | string     | null: false                    |
@@ -117,11 +109,9 @@ https://git.heroku.com/price-share.git
 
 ### Association
 - belongs_to :group
-
 - has_many :prices
 
 ## shops テーブル
-
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | name   | string     | null: false                    |
@@ -129,11 +119,9 @@ https://git.heroku.com/price-share.git
 
 ### Association
 - belongs_to :group
-
 - has_many :prices
 
 ## prices テーブル
-
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | price  | integer    | null: false                    |
